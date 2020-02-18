@@ -23,8 +23,10 @@
     trash.addEventListener("click", (event) => {
       event.preventDefault();
       const link = trash["href"];
-      alert("Are you sure you want to delete?");
-      window.location = link;
-    });
+      if (window.confirm("Are you sure you want to delete that task?")) {
+          window.location = link;
+      }
+      // window.location = link;
+      });
   });
 </script>
