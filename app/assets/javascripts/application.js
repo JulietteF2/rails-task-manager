@@ -14,3 +14,13 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+trashs = document.querySelectorAll('#delete');
+
+trashs.forEach((trash) => {
+  trash.addEventListener("click", (event) => {
+    event.preventDefault();
+    console.log(event);
+    alert("Are you sure you want to delete?");
+  });
+});

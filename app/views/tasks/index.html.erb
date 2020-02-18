@@ -1,13 +1,30 @@
 <h1>My tasks</h1>
 
+<br>
+
 <% @tasks.each do |task| %>
   <% if task.completed %>
-    <li><i class="far fa-check-square"></i> <%= link_to task.title, task_path(task) %> - <%= link_to "Delete", delete_task_path(task) %></li>
+    <li><i class="far fa-check-square"></i> <%= link_to task.title, task_path(task) %> - <a id="delete" href="tasks/<%= task.id %>/delete"><i class="fas fa-trash-alt"></i></a></li>
   <% else %>
-    <li><i class="far fa-square"></i> <%= link_to task.title, task_path(task) %> - <%= link_to "Delete", delete_task_path(task) %></li>
+    <li><i class="far fa-square"></i> <%= link_to task.title, task_path(task) %> - <a id="delete" href="tasks/<%= task.id %>/delete"><i class="fas fa-trash-alt"></i></a></li>
   <% end %>
 <% end %>
+
+<br>
 
 <%= link_to "+ Add a new task", tasks_new_path %>
 <br>
 <%= link_to "Back to list", tasks_path %>
+
+<script>
+  trashs = document.querySelectorAll('#delete');
+
+  trashs.forEach( (trash) => {
+    trash.addEventListener("click", (event) => {
+      event.preventDefault();
+      const link = trash["href"];
+      alert("Are you sure you want to delete?");
+      window.location = link;
+    });
+  });
+</script>
